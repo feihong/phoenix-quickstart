@@ -18,6 +18,7 @@ defmodule QuickstartWeb.Router do
 
     get "/", PageController, :index
     get "/hanzi", PageController, :hanzi
+    get "/faces", PageController, :faces
   end
 
   # Other scopes may use custom stacks.

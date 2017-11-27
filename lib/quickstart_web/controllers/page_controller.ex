@@ -8,4 +8,8 @@ defmodule QuickstartWeb.PageController do
   def hanzi(conn, _params) do
     render conn, "hanzi.html"
   end
+
+  def faces(conn, _params) do
+    render conn, "faces.html"
+  end
 end

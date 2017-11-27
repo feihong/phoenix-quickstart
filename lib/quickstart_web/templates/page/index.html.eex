@@ -1,7 +1,8 @@
-<h1>Phoenix Quickstart</h1>
-
-<p>This is the home  page</p>
-
-<p>
-  <a href='/hanzi'>Hey, look at this cool page</a>
-</p>
+<header>
+  <h1>Phoenix Quickstart</h1>
+  <p>
+    This is the home page. Look at <a href='/hanzi'>random hanzi</a>.
+    Also check out <a href='/faces'>fun faces</a>.
+  </p>
+</header>
+<div id='output'></div>
