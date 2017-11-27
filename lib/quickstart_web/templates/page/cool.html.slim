@@ -1,0 +1,16 @@
+h1 Cool Page
+
+p This page was written using <a target='_blank' href='https://github.com/slime-lang/slime'>Slime</a>
+
+table.table.table-bordered.table-striped
+  thead.thead-dark
+    tr
+      th #
+      th Ordinal
+      th Hanzi
+  tbody
+    = for {index, ordinal, char} <- random_hanzi do
+      tr
+        td = index
+        td = ordinal
+        td = char

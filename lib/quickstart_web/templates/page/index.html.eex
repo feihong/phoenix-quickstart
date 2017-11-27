@@ -1,3 +1,7 @@
 <h1>Phoenix Quickstart</h1>
 
 <p>This is the home  page</p>
+
+<p>
+  <a href='/cool'>Hey, look at this cool page</a>
+</p>
