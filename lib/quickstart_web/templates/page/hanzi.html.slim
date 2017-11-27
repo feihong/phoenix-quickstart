@@ -1,4 +1,4 @@
-h1 Cool Page
+h1 Random Hanzi / 随机汉子
 
 p This page was written using <a target='_blank' href='https://github.com/slime-lang/slime'>Slime</a>
 
@@ -9,8 +9,8 @@ table.table.table-bordered.table-striped
       th Ordinal
       th Hanzi
   tbody
-    = for {index, ordinal, char} <- random_hanzi do
+    = random_hanzi |> Enum.with_index(1) |> Enum.map fn {{ordinal, char}, i} ->
       tr
-        td = index
+        td = i
         td = ordinal
         td = char

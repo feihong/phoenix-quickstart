@@ -5,7 +5,7 @@ defmodule QuickstartWeb.PageController do
     render conn, "index.html"
   end
 
-  def cool(conn, _params) do
-    render conn, "cool.html"    
+  def hanzi(conn, _params) do
+    render conn, "hanzi.html"
   end
 end
