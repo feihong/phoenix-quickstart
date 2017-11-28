@@ -1,16 +1,17 @@
-h1 Random Hanzi / 随机汉子
+.container
+  h1 Random Hanzi / 随机汉子
 
-p This page was written using <a target='_blank' href='https://github.com/slime-lang/slime'>Slime</a>
+  p This page was written using <a target='_blank' href='https://github.com/slime-lang/slime'>Slime</a>
 
-table.hanzi-table.table.table-bordered.table-striped
-  thead.thead-dark
-    tr
-      th #
-      th Ordinal
-      th Hanzi
-  tbody
-    = random_hanzi() |> Enum.with_index(1) |> Enum.map fn {{ordinal, char}, i} ->
-      tr.hanzi-row
-        td = i
-        td = ordinal
-        td.hanzi = char
+  table.hanzi-table.table.table-bordered.table-striped
+    thead.thead-dark
+      tr
+        th #
+        th Ordinal
+        th Hanzi
+    tbody
+      = random_hanzi() |> Enum.with_index(1) |> Enum.map fn {{ordinal, char}, i} ->
+        tr.hanzi-row
+          td = i
+          td = ordinal
+          td.hanzi = char

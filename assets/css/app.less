@@ -1,6 +1,36 @@
 /* This file is for your main application css. */
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#index {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+
+  header {
+  }
+
+  main {
+    flex: 1;
+    font-family: monospace;
+    color: lightgreen;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    overflow-y: scroll;
+  }
+}
+
 #faces {
-  font-size: 2.5rem;
+  font-size: 2rem;
   .face {
     margin-bottom: 0.5rem;
     border-radius: 0.3rem;
@@ -9,7 +39,7 @@
 }
 
 .hanzi {
-  font-size: 3rem;
+  font-size: 1.7rem;
 }
 table.hanzi-table > tbody > tr > td {
   vertical-align: middle;
