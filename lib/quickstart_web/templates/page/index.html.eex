@@ -6,8 +6,8 @@
       Also check out <a href='/faces'>fun faces</a>.
     </div>
     <div>
-      <button class='btn btn-primary'>Do stuff</button>
-      <button class='btn btn-success'>Toggle heartbeat</button>
+      <button class='btn btn-primary dostuff'>Do stuff</button>
+      <button class='btn btn-success toggle'>Toggle heartbeat</button>
     </div>
   </header>
   <main id='output'></main>

@@ -54,9 +54,26 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("message:general", {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+$('#index button.toggle').on('click', evt => {
+  evt.preventDefault()
+  channel.push('heartbeat', 'start')
+})
+
+channel.on('heartbeat', payload => {
+  log({type: 'heartbeat', value: 'Heartbeat: ' + payload.value})
+})
+
+function log(data) {
+  let output = $('#output')
+  let para = $('<p>').text(data.value).appendTo(output)
+  let color = (data.type == 'heartbeat') ? 'pink' : 'lightgreen'
+  para.css('color', color)
+  output.scrollTop(para.offset().top - output.offset().top + output.scrollTop())
+}
 
 export default socket
