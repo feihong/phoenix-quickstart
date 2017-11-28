@@ -16,5 +16,7 @@
 
       <%= render @view_module, @view_template, assigns %>
     </div> <!-- /container -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js'></script>
+    <!-- <script src="<%= static_path(@conn, "/js/app.js") %>"></script> -->
   </body>
 </html>

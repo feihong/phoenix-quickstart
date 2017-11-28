@@ -1,7 +1,7 @@
 defmodule QuickstartWeb.PageView do
   use QuickstartWeb, :view
 
-  @eyes "^ᵒ♥•ಠ°ಥ・$'" |> String.graphemes
+  @eyes "^ᵒ♥•ಠ°ಥ・'" |> String.graphemes
   @mouths  "_◡ᴥ□Д益ェω" |> String.graphemes
   @cheeks "()[]{}《》【】||"
           |> String.graphemes

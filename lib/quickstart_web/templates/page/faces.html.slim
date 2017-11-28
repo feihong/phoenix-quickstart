@@ -4,4 +4,14 @@ p This page was written using <a target='_blank' href='https://github.com/slime-
 
 #faces
   = for face <- random_faces() do
-    p = face
+    div
+      span.face = face
+
+javascript:
+  window.onload = function() {
+    let faces = document.querySelectorAll('#faces .face')
+    let colors = randomColor({luminosity: 'light', count: faces.length})
+    for (let i=0; i < faces.length; i++) {
+      faces[i].style.backgroundColor = colors[i]
+    }
+  }
