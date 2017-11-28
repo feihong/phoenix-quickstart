@@ -2,3 +2,10 @@
 #faces {
   font-size: 2.5rem;
 }
+
+.hanzi {
+  font-size: 3rem;
+}
+table.hanzi-table > tbody > tr > td {
+  vertical-align: middle;
+}
