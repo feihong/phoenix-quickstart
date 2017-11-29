@@ -64,8 +64,17 @@ $('#index button.toggle').on('click', evt => {
   channel.push('heartbeat', 'start')
 })
 
+$('#index button.dostuff').on('click', evt => {
+  evt.preventDefault()
+  channel.push('do_stuff', '')
+})
+
 channel.on('heartbeat', payload => {
   log({type: 'heartbeat', value: 'Heartbeat: ' + payload.value})
+})
+
+channel.on('useful_result', payload => {
+  log({value: 'Useful result: ' + payload.value})
 })
 
 function log(data) {

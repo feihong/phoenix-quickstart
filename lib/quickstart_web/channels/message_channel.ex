@@ -12,8 +12,20 @@ defmodule QuickstartWeb.MessageChannel do
     broadcast! socket, "heartbeat", %{value: 101}
     {:noreply, socket}
   end
+  def handle_in("do_stuff", _payload, socket) do
+    do_stuff socket
+    {:noreply, socket}
+  end
   def handle_in(mesg_name, payload, socket) do
     IO.puts "Got message #{mesg_name}: #{inspect payload}"
     {:noreply, socket}
+  end
+
+  defp do_stuff(socket) do
+    max = Enum.random(3..10)
+    for n <- 1..max do
+      broadcast! socket, "useful_result", %{value: n}
+      Process.sleep 300
+    end
   end
 end
