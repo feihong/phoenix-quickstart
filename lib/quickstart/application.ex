@@ -12,6 +12,7 @@ defmodule Quickstart.Application do
       supervisor(QuickstartWeb.Endpoint, []),
       # Start your own worker by calling: Quickstart.Worker.start_link(arg1, arg2, arg3)
       # worker(Quickstart.Worker, [arg1, arg2, arg3]),
+      worker(Quickstart.HeartBeatServer, []),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
