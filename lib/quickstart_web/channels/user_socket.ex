@@ -2,7 +2,7 @@ defmodule QuickstartWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "message:*", QuickstartWeb.MessageChannel
+  channel "messages", QuickstartWeb.MessageChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

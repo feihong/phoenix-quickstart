@@ -9,8 +9,8 @@ defmodule Quickstart.HeartBeatServer do
     GenServer.cast(__MODULE__, :stop)
   end
 
-  def get_count() do
-    GenServer.call(__MODULE__, :count)
+  def get_active() do
+    GenServer.call(__MODULE__, :active)
   end
 
   defmodule State do
@@ -21,12 +21,14 @@ defmodule Quickstart.HeartBeatServer do
     GenServer.start_link(__MODULE__, %State{}, name: __MODULE__)
   end
 
-  def handle_call(:count, _from, state) do
-    {:reply, state.count, state}
+  def handle_call(:active, _from, state) do
+    {:reply, state.active, state}
   end
 
   def handle_cast(:start, state) do
-    Process.send_after(self(), :beat, 1000)
+    if not state.active do
+      Process.send_after(self(), :beat, 1000)
+    end
     {:noreply, %{state | active: true}}
   end
   def handle_cast(:stop, state) do
@@ -35,7 +37,7 @@ defmodule Quickstart.HeartBeatServer do
 
   def handle_info(:beat, state) do
     new_count = state.count + 1
-    # IO.puts "Heartbeat: #{new_count}"
+    QuickstartWeb.Endpoint.broadcast! "messages", "heartbeat", %{value: new_count}
     if state.active do
       Process.send_after(self(), :beat, 1000)
     end

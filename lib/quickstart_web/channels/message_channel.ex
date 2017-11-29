@@ -1,15 +1,19 @@
 defmodule QuickstartWeb.MessageChannel do
   use Phoenix.Channel
 
-  def join("message:general", _message, socket) do
+  def join("messages", _message, socket) do
     {:ok, socket}
   end
-  def join("room:" <> _private_room_id, _params, _socket) do
+  def join(_topic, _params, _socket) do
     {:error, %{reason: "unauthorized"}}
   end
 
   def handle_in("heartbeat", "start", socket) do
-    broadcast! socket, "heartbeat", %{value: 101}
+    Quickstart.HeartBeatServer.start()
+    {:noreply, socket}
+  end
+  def handle_in("heartbeat", "stop", socket) do
+    Quickstart.HeartBeatServer.stop()
     {:noreply, socket}
   end
   def handle_in("do_stuff", _payload, socket) do
