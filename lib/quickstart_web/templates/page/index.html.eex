@@ -1,13 +1,13 @@
-<div id='index'>
-  <header>
-    <h1>Phoenix Quickstart</h1>
-    <div>
-      This is the home page. Look at <a href='/hanzi'>random hanzi</a>.
-      Also check out <a href='/faces'>fun faces</a>.
-    </div>
-    <div>
-      <button class='btn btn-primary dostuff'>Do stuff</button>
-      <button class='btn btn-success toggle' data-active='<%= @heartbeat_active %>'></button>
-    </div>
-  </header>
-  <main id='output'></main>
+<header>
+  <h1>Phoenix Quickstart</h1>
+  <div>
+    This is the home page. Look at <a href='/hanzi'>random hanzi</a>.
+    Also check out <a href='/faces'>fun faces</a>.
+  </div>
+  <div>
+    <button class='btn btn-primary do-stuff'>Do stuff</button>
+    <button class='btn btn-success start-heartbeat'>Start ♥</button>
+    <button class='btn btn-warning stop-heartbeat'>Stop ♥</button>
+  </div>
+</header>
+<main id='output'></main>

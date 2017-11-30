@@ -36,11 +36,13 @@ defmodule Quickstart.HeartBeatServer do
   end
 
   def handle_info(:beat, state) do
-    new_count = state.count + 1
-    QuickstartWeb.Endpoint.broadcast! "messages", "heartbeat", %{value: new_count}
     if state.active do
       Process.send_after(self(), :beat, 1000)
+      new_count = state.count + 1
+      QuickstartWeb.Endpoint.broadcast! "messages", "heartbeat", %{value: new_count}
+      {:noreply, %{state | count: new_count}}
+    else
+      {:noreply, state}
     end
-    {:noreply, %{state | count: new_count}}
   end
 end

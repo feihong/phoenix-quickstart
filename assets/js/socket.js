@@ -59,12 +59,15 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-$('#index button.toggle').on('click', evt => {
-  evt.preventDefault()
+$('button.start-heartbeat').on('click', evt => {
   channel.push('heartbeat', 'start')
 })
 
-$('#index button.dostuff').on('click', evt => {
+$('button.stop-heartbeat').on('click', evt => {
+  channel.push('heartbeat', 'stop')
+})
+
+$('button.do-stuff').on('click', evt => {
   evt.preventDefault()
   channel.push('do_stuff', '')
 })
