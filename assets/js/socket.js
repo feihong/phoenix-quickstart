@@ -72,18 +72,33 @@ $('button.do-stuff').on('click', evt => {
   channel.push('do_stuff', '')
 })
 
-channel.on('heartbeat', payload => {
-  log({type: 'heartbeat', value: 'Heartbeat: ' + payload.value})
+channel.on('heartbeat', ({value}) => {
+  log({type: 'heartbeat', value: 'Heartbeat: ' + value})
 })
 
-channel.on('useful_result', payload => {
-  log({value: 'Useful result: ' + payload.value})
+channel.on('task_progress', ({task_id, value}) => {
+  log({value: `Task ${task_id}: ${value}`})
+})
+
+channel.on('task_result', ({task_id, value}) => {
+  log({type: 'task_result', value: `Task ${task_id}: ${value}`})
 })
 
 function log(data) {
   let output = $('#output')
   let para = $('<p>').text(data.value).appendTo(output)
-  let color = (data.type == 'heartbeat') ? 'pink' : 'lightgreen'
+  let color;
+  switch (data.type) {
+    case 'heartbeat':
+      color = 'hotpink'
+      break
+    case 'task_result':
+      color = 'turquoise'
+      break
+    default:
+      color = 'lightgreen'
+      break
+  }
   para.css('color', color)
   output.scrollTop(para.offset().top - output.offset().top + output.scrollTop())
 }

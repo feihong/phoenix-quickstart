@@ -26,10 +26,19 @@ defmodule QuickstartWeb.MessageChannel do
   end
 
   defp do_stuff(socket) do
-    max = Enum.random(3..10)
+    task_id =
+      [
+        Enum.random(?a..?z),
+        Enum.random(?0..?9),
+        Enum.random(?a..?z),
+      ]
+      |> to_string()
+
+    max = Enum.random(3..12)
     for n <- 1..max do
-      broadcast! socket, "useful_result", %{value: n}
+      broadcast! socket, "task_progress", %{task_id: task_id, value: n}
       Process.sleep 300
     end
+    broadcast! socket, "task_result", %{task_id: task_id, value: "Yay we are finished"}
   end
 end
