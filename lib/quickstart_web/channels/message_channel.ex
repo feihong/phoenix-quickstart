@@ -17,7 +17,9 @@ defmodule QuickstartWeb.MessageChannel do
     {:noreply, socket}
   end
   def handle_in("do_stuff", _payload, socket) do
-    do_stuff socket
+    # Do this stuff asynchronously, or you'll block processing of other channel
+    # messages.
+    Task.async(fn -> do_stuff socket end)
     {:noreply, socket}
   end
   def handle_in(mesg_name, payload, socket) do
@@ -34,7 +36,7 @@ defmodule QuickstartWeb.MessageChannel do
       ]
       |> to_string()
 
-    max = Enum.random(3..12)
+    max = Enum.random(6..12)
     for n <- 1..max do
       broadcast! socket, "task_progress", %{task_id: task_id, value: n}
       Process.sleep 300
