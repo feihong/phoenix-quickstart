@@ -19,7 +19,7 @@ defmodule QuickstartWeb.MessageChannel do
   def handle_in("do_stuff", _payload, socket) do
     # Do this stuff asynchronously, or you'll block processing of other channel
     # messages.
-    Task.async(fn -> do_stuff socket end)
+    Task.start(fn -> do_stuff socket end)
     {:noreply, socket}
   end
   def handle_in(mesg_name, payload, socket) do
